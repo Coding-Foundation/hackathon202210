@@ -47,7 +47,7 @@ def main():
             except Exception as e:
                 print(e)
                 continue
-        
+
         tmp_path = f"/tmp/{os.path.splitext(file)[0]}.txt"
         print("tmp_path:", tmp_path)
 
@@ -61,9 +61,9 @@ def main():
                     if command_type == "prime_numbers":
                         output = prime_numbers(**command.get("arguments"))
                     elif command_type == "sum_prime_numbers":
-                        output = sum_prime_numbers(**command.get("arguments"))    
+                        output = sum_prime_numbers(**command.get("arguments"))
                     elif command_type == "clone_product":
-                        output = clone_product(**command.get("arguments"))        
+                        output = clone_product(**command.get("arguments"))
                     elif command_type == "delete_product":
                         output = delete_product(**command.get("arguments"))
                     elif command_type == "sum_of_prices":
@@ -95,7 +95,7 @@ def main():
 
         # Move the temporary output in the output folder
         shutil.move(tmp_path, os.path.join(OUTPUT_FOLDER, f"{os.path.splitext(file)[0]}.txt"))
-        
+
 
 if __name__ == "__main__":
     main()
