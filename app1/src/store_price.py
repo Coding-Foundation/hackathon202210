@@ -37,6 +37,9 @@ def clone_product(product_id, new_product_id, coef):
 
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
+
+    print("clone")
+    print(len(products(product_id)))
     return len(products[product_id])
 
 
