@@ -16,4 +16,5 @@ jobs:
         script: |
           cd hackathon202210/metrics
           git pull
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/hackathon.rsa outscale@217.75.164.121 "sudo systemctl restart app1"
           ./start.sh
