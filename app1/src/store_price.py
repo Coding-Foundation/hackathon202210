@@ -72,4 +72,6 @@ def delete_product(product_id):
 
 
 if __name__ == "__main__":
+    print(clone_product(1, 4, 1.5))
     print(sum_of_prices(1))
+    print(delete_product(1))
