@@ -30,11 +30,8 @@ def clone_product(product_id, new_product_id, coef):
 
     # ADD_PRODUCT_URL = "http://ms1:8000/product_item"
     new_items = []
-    for item in items:
-        new_item = []
-        item["product_id"] = new_product_id
-        item["price"] *= coef
-        requests.put(url=ADD_PRODUCT_URL, json=item)
+    for id, name, price in items:
+        new_items.append([id, name, price * coef])
 
     return len(items)
 
