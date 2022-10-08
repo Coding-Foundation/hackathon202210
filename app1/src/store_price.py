@@ -31,7 +31,7 @@ def clone_product(product_id, new_product_id, coef):
     # ADD_PRODUCT_URL = "http://ms1:8000/product_item"
     new_items = []
     for id, name, price in items:
-        new_items.append([id, name, price * coef])
+        new_items.append([new_product_id, name, price * coef])
 
     return len(items)
 
