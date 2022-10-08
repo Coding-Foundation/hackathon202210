@@ -1,8 +1,5 @@
 name: Tests
-on:
-  push:
-    branches:
-      - "*"
+on: [push]
 jobs:
   name: remote ssh command
   build:
