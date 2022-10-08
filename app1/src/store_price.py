@@ -52,6 +52,5 @@ Delete all product's items
 
 
 def delete_product(product_id):
-    LIST_PRODUCT_URL = "http://ms1:8000/product"
-
-    return requests.delete(url=f"{LIST_PRODUCT_URL}/{product_id}").text
+    del products[product_id]
+    return f"Product {product_id} was successefully deleted"
