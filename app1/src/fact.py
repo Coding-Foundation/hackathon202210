@@ -1,3 +1,3 @@
 import math
 
-cmd_fact = lambda x: str(math.factorial)
+cmd_fact = lambda x: str(math.factorial(x))
