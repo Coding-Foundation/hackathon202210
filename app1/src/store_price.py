@@ -32,7 +32,7 @@ def clone_product(product_id, new_product_id, coef):
     product_id = str(product_id)
     items = products[str(product_id)]
     for id, name, price in items:
-        new_items.append([new_product_id, name, float(price) * coef])
+        new_items.append([str(new_product_id), name, float(price) * coef])
     items.extend(new_items)
     products[product_id] = items
 
