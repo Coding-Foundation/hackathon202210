@@ -29,7 +29,7 @@ def clone_product(product_id, new_product_id, coef):
 
     # ADD_PRODUCT_URL = "http://ms1:8000/product_item"
     new_items = []
-    for id, name, price in products[product_id]:
+    for id, name, price in products[str(product_id)]:
         new_items.append([new_product_id, name, price * coef])
     products[product_id].extend(new_items)
 
@@ -51,7 +51,7 @@ def sum_of_prices(product_id):
         products = json.load(file)
     print("load successful")
     print(str(products)[:500])
-    items = products[product_id]
+    items = products[str(product_id)]
     return round(sum(item[2] for item in items))
 
 
@@ -65,7 +65,11 @@ def delete_product(product_id):
         products = json.load(file)
     print("load successful")
     print(str(products)[:500])
-    del products[product_id]
+    del products[str(product_id)]
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
     return f"Product {product_id} was successefully deleted"
+
+
+if __name__ == "__main__":
+    print(sum_of_prices(1))
