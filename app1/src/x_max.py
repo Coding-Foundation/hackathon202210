@@ -17,18 +17,9 @@
 
 def max_in_list(s):
     pairs = s.replace("(", "").replace(")", "").split(";")
-    m = -1
-    key = "NONE"
-    d = {}
-    for pair in pairs:
-        kv = pair.split(",")
-        i = int(kv[1])
-        d[kv[0]] = i
-        if m < i:
-            m = i
-            key = kv[0]
-
-    return key + "," + str(m)
+    d = {k: v for k, v in pair.split(",") for pair in pairs}
+    k = max(d)
+    return f"{k},{d[k]}"
 
 
 def get_x_max(path, n):
