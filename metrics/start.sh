@@ -13,11 +13,11 @@ mkdir totals
 # If new vm is added add it here
 app1ip=$(cat ../app1_connect.sh | sed 's/.*@\([.0-9]*\)/\1/')
 db1ip=$(cat ../db1_connect.sh | sed 's/.*@\([.0-9]*\)/\1/')
-ms1ip=$(cat ../ms1_connect.sh | sed 's/.*@\([.0-9]*\)/\1/')
+#ms1ip=$(cat ../ms1_connect.sh | sed 's/.*@\([.0-9]*\)/\1/')
 
 # Start collecting energy consumption metrics on all VMs
-$SSH outscale@$ms1ip "sudo killall powertop; sudo rm -rf /data/metrics/*" 
-$SSH outscale@$ms1ip "nohup sudo powertop --csv=/data/metrics/power.csv --time=15 --iteration=1000 > /data/logs/powertop.log 2> /data/logs/powertop.err < /dev/null &" 
+#$SSH outscale@$ms1ip "sudo killall powertop; sudo rm -rf /data/metrics/*" 
+#$SSH outscale@$ms1ip "nohup sudo powertop --csv=/data/metrics/power.csv --time=15 --iteration=1000 > /data/logs/powertop.log 2> /data/logs/powertop.err < /dev/null &" 
 
 $SSH outscale@$db1ip "sudo killall powertop; sudo rm -rf /data/metrics/*" 
 $SSH outscale@$db1ip "nohup sudo powertop --csv=/data/metrics/power.csv --time=15 --iteration=1000 > /data/logs/powertop.log 2> /data/logs/powertop.err < /dev/null &" 
@@ -26,8 +26,8 @@ $SSH outscale@$app1ip "sudo killall powertop; sudo rm -rf /data/metrics/*"
 $SSH outscale@$app1ip "nohup sudo powertop --csv=/data/metrics/power.csv --time=15 --iteration=1000 > /data/logs/powertop.log 2> /data/logs/powertop.err < /dev/null &" 
 
 # Start collecting traffic on all VMs
-$SSH outscale@$ms1ip "sudo killall ifstat; sudo rm -rf /data/metrics/ifstat.txt"
-$SSH outscale@$ms1ip "nohup ifstat -n -t -w -i eth0 > /data/metrics/ifstat_ms1.txt 2> /data/logs/ifstat.err < /dev/null &" 
+#$SSH outscale@$ms1ip "sudo killall ifstat; sudo rm -rf /data/metrics/ifstat.txt"
+#$SSH outscale@$ms1ip "nohup ifstat -n -t -w -i eth0 > /data/metrics/ifstat_ms1.txt 2> /data/logs/ifstat.err < /dev/null &" 
 
 $SSH outscale@$db1ip "sudo killall ifstat; sudo rm -rf /data/metrics/ifstat.txt"
 $SSH outscale@$db1ip "nohup ifstat -n -t -w -i eth0 > /data/metrics/ifstat_db1.txt 2> /data/logs/ifstat.err < /dev/null &"
@@ -63,7 +63,7 @@ date > metrics/stop_date.txt
 # Collect mitric files from all vms
 $SCP outscale@$app1ip:/data/metrics/* metrics/
 $SCP outscale@$db1ip:/data/metrics/* metrics/
-$SCP outscale@$ms1ip:/data/metrics/* metrics/
+#$SCP outscale@$ms1ip:/data/metrics/* metrics/
 
 # Collect output files
 $SCP outscale@$app1ip:/data/output/* output/
