@@ -14,8 +14,9 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          cd hackathon202210/metrics
+          cd hackathon202210
           git pull
           scp -r -i ~/.ssh/hackathon.rsa app1/src/* outscale@217.75.164.121:/data/code
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/hackathon.rsa outscale@217.75.164.121 "sudo systemctl restart app1"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/hackathon.rsa outscale@217.75.164.121 sudo systemctl restart app1
+          cd metrics
           ./start.sh
