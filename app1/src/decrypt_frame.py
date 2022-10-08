@@ -1,7 +1,7 @@
 import json
 
-# from collections import OrderedDict
-# import datetime
+from collections import OrderedDict
+import datetime
 
 """
 In this case, it's a classic frame decoding problem
@@ -15,7 +15,7 @@ or the error message
 
 """
 
-"""
+
 DATE_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 FOS_LIST = ["CC29","23FE"]
 
@@ -143,13 +143,9 @@ def frame_to_json(frame):
          ),
 
     ])
-"""
 
 
 def decode_frame(frame):
-    json_object = json.loads(frame)
-    str = json.dumps(json_object, indent=4)
-    """
     str=""
     if len(frame) != 144:
         str="Invalid frame"
@@ -160,5 +156,4 @@ def decode_frame(frame):
     else:
         frame_dict = frame_to_json(frame)
         str=json.dumps(frame_dict, indent=4)
-    """
     return str
