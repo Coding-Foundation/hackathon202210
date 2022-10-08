@@ -37,7 +37,7 @@ def clone_product(product_id, new_product_id, coef):
         json.dump(products, file)
 
     print("clone")
-    print(len(products(product_id)))
+    print(len(products[product_id]))
     return len(products[product_id])
 
 
