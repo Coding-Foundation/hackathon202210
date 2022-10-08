@@ -1,4 +1,4 @@
-import requests
+import json
 
 """
 The table "product_items" in db1 contains items with the following fields (see db1/db_init.sql):
@@ -16,16 +16,13 @@ Communication with the database is processed via the ms1
 
 Return the number of clonned items
 """
-import json
-
-with open("/data/code/product_items.json", "r") as file:
-    products = json.load(file)
 
 
 def clone_product(product_id, new_product_id, coef):
     with open("/data/code/product_items.json", "r") as file:
         products = json.load(file)
     print("load successful")
+    print(str(products)[:500])
 
     # LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     # items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
@@ -52,6 +49,8 @@ Find the sum of items prices of a product
 def sum_of_prices(product_id):
     with open("/data/code/product_items.json", "r") as file:
         products = json.load(file)
+    print("load successful")
+    print(str(products)[:500])
     items = products[product_id]
     return round(sum(item[2] for item in items))
 
@@ -64,6 +63,8 @@ Delete all product's items
 def delete_product(product_id):
     with open("/data/code/product_items.json", "r") as file:
         products = json.load(file)
+    print("load successful")
+    print(str(products)[:500])
     del products[product_id]
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
