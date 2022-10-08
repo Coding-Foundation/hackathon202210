@@ -17,9 +17,9 @@
 
 def max_in_list(s):
     pairs = s.replace("(", "").replace(")", "").split(";")
-    d = {k: v for k, v in pair.split(",") for pair in pairs}
-    k = max(d)
-    return f"{k},{d[k]}"
+    l = [pair.split(",") for pair in pairs]
+    k = max(l, key=lambda t: int(t[1]))
+    return f"{k[0]},{k[1]}"
 
 
 def get_x_max(path, n):
@@ -36,3 +36,8 @@ def get_x_max(path, n):
         s = s.replace("(" + str(max) + ");", "").replace(";(" + str(max) + ")", "")
 
     return str(keys)
+
+if __name__ == '__main__':
+    print(get_x_max("./xmax_1.txt", 1))
+    print(get_x_max("./xmax_2.txt", 30))
+    print(get_x_max("./xmax_3.txt", 3))
