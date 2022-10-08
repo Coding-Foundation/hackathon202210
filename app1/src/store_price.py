@@ -18,7 +18,7 @@ Return the number of clonned items
 """
 
 
-def clone_product(product_id, new_product_id, coef):
+def clone_product(product_id, new_product_id, coef, products=products):
     LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
@@ -37,7 +37,7 @@ Find the sum of items prices of a product
 """
 
 
-def sum_of_prices(product_id):
+def sum_of_prices(product_id, products=products):
     LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
@@ -49,7 +49,7 @@ Delete all product's items
 """
 
 
-def delete_product(product_id):
+def delete_product(product_id, products=products):
     LIST_PRODUCT_URL = "http://ms1:8000/product"
 
     return requests.delete(url=f"{LIST_PRODUCT_URL}/{product_id}").text
