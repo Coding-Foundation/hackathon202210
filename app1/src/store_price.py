@@ -32,9 +32,10 @@ def clone_product(product_id, new_product_id, coef):
     product_id = str(product_id)
     items = products[str(product_id)]
     for id, name, price in items:
-        new_items.append([str(new_product_id), name, float(price) * coef])
-    items.extend(new_items)
-    products[product_id] = items
+        new_items.append(["0", name, float(price) * coef])
+    products[str(new_product_id)] = new_items
+    print("items")
+    print(items)
 
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
@@ -51,6 +52,9 @@ def sum_of_prices(product_id):
     with open("/data/code/product_items.json", "r") as file:
         products = json.load(file)
     print("load successful")
+    for key in products.keys():
+        print(type(key))
+
     print(str(products)[:500])
     product_id = str(product_id)
     items = products[str(product_id)]
