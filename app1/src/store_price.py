@@ -16,6 +16,7 @@ Communication with the database is processed via the ms1
 
 Return the number of clonned items
 """
+n = 3000
 
 
 def clone_product(product_id, new_product_id, coef):
@@ -25,7 +26,8 @@ def clone_product(product_id, new_product_id, coef):
     product_id = str(product_id)
     items = products[str(product_id)]
     for id, name, price in items:
-        new_items.append(["0", name, float(price) * coef])
+        n += 1
+        new_items.append([str(n), name, float(price) * coef])
     products[str(new_product_id)] = new_items
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
