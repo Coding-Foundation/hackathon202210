@@ -37,7 +37,8 @@ def get_x_max(path, n):
 
     return str(keys)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print(get_x_max("./xmax_1.txt", 1))
     print(get_x_max("./xmax_2.txt", 30))
     print(get_x_max("./xmax_3.txt", 3))

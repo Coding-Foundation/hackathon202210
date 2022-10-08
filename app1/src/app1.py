@@ -53,21 +53,31 @@ def main():
 
         tmp_path = f"/tmp/{os.path.splitext(file)[0]}.txt"
         print("tmp_path:", tmp_path)
-        
+
         funcs = [
             functools.partial(prime_numbers, **commands.items()[0][1].get("arguments")),
-            functools.partial(sum_prime_numbers, **commands.items()[1][1].get("arguments")),
+            functools.partial(
+                sum_prime_numbers, **commands.items()[1][1].get("arguments")
+            ),
             functools.partial(clone_product, **commands.items()[2][1].get("arguments")),
-            functools.partial(delete_product, **commands.items()[3][1].get("arguments")),
+            functools.partial(
+                delete_product, **commands.items()[3][1].get("arguments")
+            ),
             functools.partial(sum_of_prices, **commands.items()[4][1].get("arguments")),
-            functools.partial(parse_transport_stream, **commands.items()[5][1].get("arguments")),
+            functools.partial(
+                parse_transport_stream, **commands.items()[5][1].get("arguments")
+            ),
             functools.partial(cmd_fact, **commands.items()[6][1].get("arguments")),
             functools.partial(get_x_max, **commands.items()[7][1].get("arguments")),
-            functools.partial(templating_dlms, **commands.items()[8][1].get("arguments")),
+            functools.partial(
+                templating_dlms, **commands.items()[8][1].get("arguments")
+            ),
             functools.partial(decode_frame, **commands.items()[9][1].get("arguments")),
-            functools.partial(sink_aggregation, **commands.items()[10][1].get("arguments")),
+            functools.partial(
+                sink_aggregation, **commands.items()[10][1].get("arguments")
+            ),
         ]
-        
+
         with Pool(processes=11) as pool:
             res = pool.map(lambda f: f(), funcs)
 
