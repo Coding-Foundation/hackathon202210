@@ -18,10 +18,8 @@ Return the number of clonned items
 """
 import json
 
-d = {}
-
-with open("/data/code/product_items.json", "r") as file:
-    d.update(json.load(f))
+with open("product_items.json", "r") as file:
+    d = json.load(f)
 
 print(d)
 
