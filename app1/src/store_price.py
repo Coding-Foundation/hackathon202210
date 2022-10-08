@@ -25,19 +25,19 @@ with open("/data/code/product_items.json", "r") as file:
 def clone_product(product_id, new_product_id, coef):
     with open("/data/code/product_items.json", "r") as file:
         products = json.load(file)
-    items = products[product_id]
 
     # LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     # items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
     # ADD_PRODUCT_URL = "http://ms1:8000/product_item"
     new_items = []
-    for id, name, price in items:
+    for id, name, price in products[product_id]:
         new_items.append([new_product_id, name, price * coef])
+    products[product_id].extend(new_items)
 
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
-    return len(items)
+    return len(products[product_id])
 
 
 """
