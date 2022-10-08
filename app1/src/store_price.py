@@ -21,8 +21,6 @@ import json
 with open("/data/code/product_items.json", "r") as file:
     d = json.load(file)
 
-print(d)
-
 
 def clone_product(product_id, new_product_id, coef):
     items = d[product_id]
