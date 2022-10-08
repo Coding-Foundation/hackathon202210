@@ -20,7 +20,7 @@ import json
 
 d = {}
 
-with open("product_items.json", "r") as file:
+with open("/data/code/product_items.json", "r") as file:
     d.update(json.load(f))
 
 print(d)
@@ -29,10 +29,10 @@ print(d)
 def clone_product(product_id, new_product_id, coef):
     items = d[product_id]
 
-    LIST_PRODUCT_URL = "http://ms1:8000/product_items"
-    items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
+    # LIST_PRODUCT_URL = "http://ms1:8000/product_items"
+    # items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
-    ADD_PRODUCT_URL = "http://ms1:8000/product_item"
+    # ADD_PRODUCT_URL = "http://ms1:8000/product_item"
     new_items = []
     for item in items:
         new_item = []
