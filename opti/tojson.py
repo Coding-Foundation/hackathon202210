@@ -8,8 +8,8 @@ with open("product_items.csv", "r") as file:
     products = csv.reader(file, delimiter=" ", quotechar="|")
 
     for product in products:
-        product_id = product[0]
-        products_dict[product_id] = product[1:]
+        product_id = product[1]
+        products_dict[product_id] = [product[0]] + product[2:]
 
 with open("product_items.json", "w") as file:
     json.dump(products_dict, file)

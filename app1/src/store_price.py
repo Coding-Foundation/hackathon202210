@@ -16,14 +16,19 @@ Communication with the database is processed via the ms1
 
 Return the number of clonned items
 """
-import csv
+import json
 
-with open("product_items.csv", "r") as file:
-    products = csv.reader(file, delimiter=" ", quotechar="|")
-print(products)
+d = {}
+
+with open("product_items.json", "r") as file:
+    d.update(json.load(f))
+
+print(d)
 
 
 def clone_product(product_id, new_product_id, coef):
+    items = d[product_id]
+
     LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
