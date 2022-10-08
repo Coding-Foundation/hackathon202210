@@ -19,11 +19,11 @@ Return the number of clonned items
 import json
 
 with open("/data/code/product_items.json", "r") as file:
-    d = json.load(file)
+    products = json.load(file)
 
 
 def clone_product(product_id, new_product_id, coef):
-    items = d[product_id]
+    items = products[product_id]
 
     # LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     # items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
@@ -42,10 +42,8 @@ Find the sum of items prices of a product
 
 
 def sum_of_prices(product_id):
-    LIST_PRODUCT_URL = "http://ms1:8000/product_items"
-    items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
-
-    return round(sum([i["price"] for i in items]))
+    items = products[product_id]
+    return round(sum(item[2] for item in items))
 
 
 """
