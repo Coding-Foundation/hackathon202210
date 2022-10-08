@@ -53,7 +53,7 @@ def sum_of_prices(product_id):
     print("load successful")
     print(str(products)[:500])
     product_id = str(product_id)
-    items = products[product_id]
+    items = products[str(product_id)]
     return round(sum(float(item[2]) for item in items))
 
 
