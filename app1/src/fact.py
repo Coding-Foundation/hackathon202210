@@ -1,7 +1,3 @@
 import math
 
-factorielle = math.factorial
-
-
-def cmd_fact(n):
-    return str(factorielle(n))
+cmd_fact = lambda x: str(math.factorial)
