@@ -19,7 +19,7 @@ Return the number of clonned items
 import json
 
 with open("product_items.json", "r") as file:
-    d = json.load(f)
+    d = json.load(file)
 
 print(d)
 
