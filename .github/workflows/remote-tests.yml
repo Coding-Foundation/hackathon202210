@@ -15,4 +15,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd hackathon202210/metrics
-          ./start.sh"
+          ./start.sh
