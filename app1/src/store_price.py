@@ -51,7 +51,8 @@ def sum_of_prices(product_id):
         products = json.load(file)
     print("load successful")
     print(str(products)[:500])
-    items = products[str(product_id)]
+    product_id = str(product_id)
+    items = products[product_id]
     return round(sum(int(item[2]) for item in items))
 
 
@@ -65,7 +66,8 @@ def delete_product(product_id):
         products = json.load(file)
     print("load successful")
     print(str(products)[:500])
-    del products[str(product_id)]
+    product_id = str(product_id)
+    del products[product_id]
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
     return f"Product {product_id} was successefully deleted"
