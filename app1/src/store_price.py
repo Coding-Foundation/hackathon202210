@@ -34,6 +34,7 @@ def clone_product(product_id, new_product_id, coef):
     for id, name, price in items:
         new_items.append([new_product_id, name, float(price) * coef])
     items.extend(new_items)
+    products[product_id] = items
 
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
