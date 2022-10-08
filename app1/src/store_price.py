@@ -29,16 +29,16 @@ def clone_product(product_id, new_product_id, coef):
 
     # ADD_PRODUCT_URL = "http://ms1:8000/product_item"
     new_items = []
-    for id, name, price in products[str(product_id)]:
-        new_items.append([str(new_product_id), name, float(price) * coef])
-    products[str(product_id)].extend(new_items)
+    product_id = str(product_id)
+    items = products[str(product_id)]
+    for id, name, price in items:
+        new_items.append([new_product_id, name, float(price) * coef])
+    items.extend(new_items)
 
     with open("/data/code/product_items.json", "w") as file:
         json.dump(products, file)
 
-    print("clone")
-    print(len(products[str(product_id)]))
-    return len(products[str(product_id)])
+    return len(items)
 
 
 """
