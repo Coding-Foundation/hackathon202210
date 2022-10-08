@@ -5,7 +5,7 @@ Command: prime_numbers
 Return a list of all the prime numbers inferior or equal to n
 """
 def prime_numbers(n):
-    return primerange(0, n)
+    return primerange(0, 2)
 
 
 """
