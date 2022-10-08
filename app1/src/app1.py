@@ -12,6 +12,9 @@ from prime_numbers import prime_numbers, sum_prime_numbers
 from transport_stream import parse_transport_stream
 from sink_aggregation import sink_aggregation
 
+from multiprocessing import Pool
+import functools
+
 # See README.md for details
 
 # Don't forget to relaod the service after any code change: 
@@ -50,6 +53,49 @@ def main():
 
         tmp_path = f"/tmp/{os.path.splitext(file)[0]}.txt"
         print("tmp_path:", tmp_path)
+        
+        funcs = [
+            functools.partial(prime_numbers, **commands.items()[0][1].get("arguments")),
+            functools.partial(sum_prime_numbers, **commands.items()[1][1].get("arguments")),
+            functools.partial(clone_product, **commands.items()[2][1].get("arguments")),
+            functools.partial(delete_product, **commands.items()[3][1].get("arguments")),
+            functools.partial(sum_of_prices, **commands.items()[4][1].get("arguments")),
+            functools.partial(parse_transport_stream, **commands.items()[5][1].get("arguments")),
+            functools.partial(cmd_fact, **commands.items()[6][1].get("arguments")),
+            functools.partial(get_x_max, **commands.items()[7][1].get("arguments")),
+            functools.partial(templating_dlms, **commands.items()[8][1].get("arguments")),
+            functools.partial(decode_frame, **commands.items()[9][1].get("arguments")),
+            functools.partial(sink_aggregation, **commands.items()[10][1].get("arguments")),
+        ]
+        
+        with Pool(processes=11) as pool:
+            res = pool.map(lambda f: f(), funcs)
+
+            try:
+                if command_type == "prime_numbers":
+                    output = res[0]
+                elif command_type == "sum_prime_numbers":
+                    output = res[1]
+                elif command_type == "clone_product":
+                    output = res[2]
+                elif command_type == "delete_product":
+                    output = res[3]
+                elif command_type == "sum_of_prices":
+                    output = res[4]
+                elif command_type == "parse_transport_stream":
+                    output = res[5]
+                elif command_type == "cmd_fact":
+                    output = res[6]
+                elif command_type == "get_x_max":
+                    output = res[7]
+                elif command_type == "templating_dlms":
+                    output = res[8]
+                elif command_type == "decode_frame":
+                    output = res[9]
+                elif command_type == "sink_aggregation":
+                    output = res[10]
+            except Exception as e:
+                print(e)
 
         # For each command within the file perform an action
         with open(tmp_path, 'w') as f:
