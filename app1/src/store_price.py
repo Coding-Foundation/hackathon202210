@@ -25,6 +25,7 @@ with open("/data/code/product_items.json", "r") as file:
 def clone_product(product_id, new_product_id, coef):
     with open("/data/code/product_items.json", "r") as file:
         products = json.load(file)
+    print("load successful")
 
     # LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     # items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
