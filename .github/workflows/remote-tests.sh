@@ -1,18 +1,8 @@
 name: Tests
-
 on:
-  schedule:
-  - cron: "0 4 * * *" # everyday at 4 am
   push:
     branches:
-      - master
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
-
-  # Run tests for any PRs.
-  pull_request:
-
+      - "*"
 jobs:
   name: remote ssh command
   build:
