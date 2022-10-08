@@ -16,9 +16,14 @@ Communication with the database is processed via the ms1
 
 Return the number of clonned items
 """
+import csv
+
+with open("product_items.csv", "r") as file:
+    products = csv.reader(file, delimiter=" ", quotechar="|")
+print(products)
 
 
-def clone_product(product_id, new_product_id, coef, products=products):
+def clone_product(product_id, new_product_id, coef):
     LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
@@ -37,7 +42,7 @@ Find the sum of items prices of a product
 """
 
 
-def sum_of_prices(product_id, products=products):
+def sum_of_prices(product_id):
     LIST_PRODUCT_URL = "http://ms1:8000/product_items"
     items = requests.get(url=f"{LIST_PRODUCT_URL}/{product_id}").json()
 
@@ -49,7 +54,7 @@ Delete all product's items
 """
 
 
-def delete_product(product_id, products=products):
+def delete_product(product_id):
     LIST_PRODUCT_URL = "http://ms1:8000/product"
 
     return requests.delete(url=f"{LIST_PRODUCT_URL}/{product_id}").text

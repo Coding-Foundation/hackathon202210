@@ -15,12 +15,6 @@ from sink_aggregation import sink_aggregation
 from multiprocessing import Pool
 import functools
 
-import csv
-
-with open("product_items.csv", "r") as file:
-    products = csv.reader(file, delimiter=" ", quotechar="|")
-print(products)
-
 # See README.md for details
 
 # Don't forget to relaod the service after any code change:
@@ -125,17 +119,11 @@ def main():
                     elif command_type == "sum_prime_numbers":
                         output = sum_prime_numbers(**command.get("arguments"))
                     elif command_type == "clone_product":
-                        output = clone_product(
-                            **command.get("arguments"), products=products
-                        )
+                        output = clone_product(**command.get("arguments"))
                     elif command_type == "delete_product":
-                        output = delete_product(
-                            **command.get("arguments"), products=products
-                        )
+                        output = delete_product(**command.get("arguments"))
                     elif command_type == "sum_of_prices":
-                        output = sum_of_prices(
-                            **command.get("arguments"), products=products
-                        )
+                        output = sum_of_prices(**command.get("arguments"))
                     elif command_type == "parse_transport_stream":
                         output = parse_transport_stream(**command.get("arguments"))
                     elif command_type == "cmd_fact":
