@@ -1,7 +1,6 @@
 name: Tests
 on: [push]
 jobs:
-  name: remote ssh command
   build:
     name: Tests
     runs-on: ubuntu-latest
