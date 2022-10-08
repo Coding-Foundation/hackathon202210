@@ -23,6 +23,8 @@ with open("/data/code/product_items.json", "r") as file:
 
 
 def clone_product(product_id, new_product_id, coef):
+    with open("/data/code/product_items.json", "r") as file:
+        products = json.load(file)
     items = products[product_id]
 
     # LIST_PRODUCT_URL = "http://ms1:8000/product_items"
@@ -33,6 +35,8 @@ def clone_product(product_id, new_product_id, coef):
     for id, name, price in items:
         new_items.append([new_product_id, name, price * coef])
 
+    with open("/data/code/product_items.json", "w") as file:
+        json.dump(products, file)
     return len(items)
 
 
@@ -42,6 +46,8 @@ Find the sum of items prices of a product
 
 
 def sum_of_prices(product_id):
+    with open("/data/code/product_items.json", "r") as file:
+        products = json.load(file)
     items = products[product_id]
     return round(sum(item[2] for item in items))
 
@@ -52,5 +58,9 @@ Delete all product's items
 
 
 def delete_product(product_id):
+    with open("/data/code/product_items.json", "r") as file:
+        products = json.load(file)
     del products[product_id]
+    with open("/data/code/product_items.json", "w") as file:
+        json.dump(products, file)
     return f"Product {product_id} was successefully deleted"
