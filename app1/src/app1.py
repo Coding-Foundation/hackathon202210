@@ -65,6 +65,7 @@ def main():
                         output = sum_prime_numbers(**command.get("arguments"))
                     elif command_type == "clone_product":
                         output = clone_product(**command.get("arguments"))
+                        print("app1:", output)
                     elif command_type == "delete_product":
                         output = delete_product(**command.get("arguments"))
                     elif command_type == "sum_of_prices":
